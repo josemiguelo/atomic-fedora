@@ -1,0 +1,10 @@
+[Unit]
+Description=Force Apply Steam Fixes
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/steam-fixer.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

@@ -23,6 +23,9 @@ modules:
         install:
           - md.obsidian.Obsidian
   - type: dnf
+    install:
+      packages:
+        - firefox
     remove:
       packages:
         - code

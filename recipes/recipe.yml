@@ -9,6 +9,7 @@ image-version: stable
 
 modules:
 
+  # steam configs
   - type: files
     files:
       - source: scripts/steam-fixer.sh
@@ -16,18 +17,24 @@ modules:
       - source: systemd/user/steam-fixer.service
         destination: /usr/lib/systemd/user/steam-fixer.service
 
+  # obsidian
   - type: default-flatpaks
     configurations:
       - notify: true
         scope: user
         install:
           - md.obsidian.Obsidian
+
+  # vscode
   - type: dnf
-    install:
-      packages:
-        - firefox
     remove:
       packages:
         - code
+
+  # firefox
+  - type: script
+    snippets:
+      - "dnf5 config-manager setopt fedora-cisco-openh264.enabled=1"
+      - "dnf5 install -y firefox --allowerasing"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

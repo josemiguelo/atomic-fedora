@@ -25,12 +25,6 @@ modules:
         install:
           - md.obsidian.Obsidian
 
-  # vscode
-  - type: dnf
-    remove:
-      packages:
-        - code
-
   # firefox
   - type: script
     snippets:

@@ -14,4 +14,4 @@ mkdir -p "$HOME"/.config/ublue/
 touch "$HOME"/.config/ublue/setup-done
 
 # 4. Cleanup: Remove the autostart file so it doesn't try to launch next time
-rm -f "$HOME"/.config/autostart/my-setup.desktop
+rm -f "$HOME"/.config/autostart/first-time-checker.desktop

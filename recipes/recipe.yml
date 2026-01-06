@@ -40,5 +40,8 @@ modules:
         destination: /usr/share/first-time-checker.desktop
       - source: first-time-checker/bin
         destination: /usr/bin/first-time-checker
+  - type: script
+    snippets:
+      - "chmod 755 /usr/bin/first-time-checker"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

@@ -35,10 +35,10 @@ modules:
   - type: files
     files:
       - source: first-time-checker/profile.d.sh
-        destination: etc/profile.d/first-time-checker.sh
+        destination: /etc/profile.d/first-time-checker.sh
       - source: first-time-checker/share.desktop
-        destination: user/share/first-time-checker.desktop
+        destination: /usr/share/first-time-checker.desktop
       - source: first-time-checker/bin
-        destination: user/bin/first-time-checker
+        destination: /usr/bin/first-time-checker
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

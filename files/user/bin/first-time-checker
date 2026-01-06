@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# 1. Exit early if already done (Safety check)
+if test -e "$HOME"/.config/ublue/setup-done; then
+    echo "first time checker has been run"
+    exit 0
+fi
+
+# 2. Your custom logic here (e.g., flatpak installs, dconf settings)
+flatpak uninstall --delete-data org.mozilla.firefox -y
+
+# 3. Create the marker to ensure it doesn't run again
+mkdir -p "$HOME"/.config/ublue/
+touch "$HOME"/.config/ublue/setup-done
+
+# 4. Cleanup: Remove the autostart file so it doesn't try to launch next time
+rm -f "$HOME"/.config/autostart/my-setup.desktop

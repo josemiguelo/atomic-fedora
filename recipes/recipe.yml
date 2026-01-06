@@ -31,4 +31,14 @@ modules:
       - "dnf5 config-manager setopt fedora-cisco-openh264.enabled=1"
       - "dnf5 install -y firefox --allowerasing"
 
+  # first time installer
+  - type: files
+    files:
+      - source: etc/profile.d/first-time-checker.sh
+        destination: etc/profile.d/first-time-checker.sh
+      - source: user/share/first-time-checker.desktop
+        destination: user/share/first-time-checker.desktop
+      - source: user/bin/first-time-checker
+        destination: user/bin/first-time-checker
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

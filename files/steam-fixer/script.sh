@@ -8,4 +8,3 @@ cat <<EOF >"$HOME/.steam/steam/steam_dev.cfg"
 @ShaderBackgroundProcessingThreads 8
 unShaderBackgroundProcessingThreads 8
 EOF
-

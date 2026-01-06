@@ -12,9 +12,9 @@ modules:
   # steam configs
   - type: files
     files:
-      - source: scripts/steam-fixer.sh
+      - source: steam-fixer/script.sh
         destination: /usr/bin/steam-fixer.sh
-      - source: systemd/user/steam-fixer.service
+      - source: steam-fixer/systemd.service
         destination: /usr/lib/systemd/user/steam-fixer.service
 
   # obsidian
@@ -34,11 +34,11 @@ modules:
   # first time installer
   - type: files
     files:
-      - source: first-time-checker/profile.d.sh
+      - source: first-time-checker/trigger.sh
         destination: /etc/profile.d/first-time-checker.sh
-      - source: first-time-checker/share.desktop
+      - source: first-time-checker/entry.desktop
         destination: /usr/share/first-time-checker.desktop
-      - source: first-time-checker/bin
+      - source: first-time-checker/script
         destination: /usr/bin/first-time-checker
   - type: script
     snippets:

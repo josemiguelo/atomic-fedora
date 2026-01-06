@@ -2,8 +2,8 @@
 
 # 1. Exit early if already done (Safety check)
 if test -e "$HOME"/.config/ublue/setup-done; then
-    echo "first time checker has been run"
-    exit 0
+  echo "first time checker has been run"
+  exit 0
 fi
 
 # 2. Your custom logic here (e.g., flatpak installs, dconf settings)

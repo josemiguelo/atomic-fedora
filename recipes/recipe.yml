@@ -4,7 +4,7 @@
 name: atomic-fedora
 description: This is my personal OS image
 
-base-image: ghcr.io/ublue-os/bazzite-dx-nvidia-gnome
+base-image: ghcr.io/ublue-os/bazzite-dx-nvidia
 image-version: stable
 
 modules:

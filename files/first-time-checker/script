@@ -7,8 +7,11 @@ if test -e "$HOME"/.config/ublue/setup-done; then
 fi
 
 # 2. Your custom logic here (e.g., flatpak installs, dconf settings)
+
 flatpak uninstall --delete-data org.mozilla.firefox -y
 flatpak install -y md.obsidian.Obsidian
+
+sed -i '/^\[Desktop Entry\]/a Hidden=true' "$HOME"/.config/autostart/steam.desktop
 
 # 3. Create the marker to ensure it doesn't run again
 mkdir -p "$HOME"/.config/ublue/

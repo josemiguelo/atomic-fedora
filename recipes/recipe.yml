@@ -62,4 +62,10 @@ modules:
     scripts:
       - set-1password.sh
 
+  # qmk
+  - type: script
+    snippets:
+      - "dnf5 copr enable -y ilyaas/qmk"
+      - "dnf5 install -y qmk"
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

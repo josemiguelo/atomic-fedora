@@ -1,21 +1,36 @@
 #!/bin/sh
 
-# 1. Exit early if already done (Safety check)
 if test -e "$HOME"/.config/ublue/setup-done; then
+  kdialog --title "first-time-checker" --passivepopup "This process has been already run" 10
   echo "first time checker has been run"
   exit 0
+else
+  kdialog --title "first-time-checker" --passivepopup "Starting first-time-checker script" 10
+  echo "Starting first-time-checker script"
 fi
 
-# 2. Your custom logic here (e.g., flatpak installs, dconf settings)
+##############################################################################################
+##############################################################################################
 
+# flapaks
+kdialog --title "first-time-checker" --passivepopup "configuring flatpaks" 10
 flatpak uninstall --delete-data org.mozilla.firefox -y
 flatpak install -y md.obsidian.Obsidian
 
+# python packages
+kdialog --title "first-time-checker" --passivepopup "configuring python packages" 10
+python -m pip install --user qmk
+
+# steam
 sed -i '/^\[Desktop Entry\]/a Hidden=true' "$HOME"/.config/autostart/steam.desktop
 
-# 3. Create the marker to ensure it doesn't run again
+##############################################################################################
+##############################################################################################
+
+kdialog --title "first-time-checker" --passivepopup "Finishing first-time-checker script" 10
+echo "Finishing first-time-checker script"
+
 mkdir -p "$HOME"/.config/ublue/
 touch "$HOME"/.config/ublue/setup-done
 
-# 4. Cleanup: Remove the autostart file so it doesn't try to launch next time
 rm -f "$HOME"/.config/autostart/first-time-checker.desktop

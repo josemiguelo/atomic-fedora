@@ -57,4 +57,9 @@ modules:
       - "dnf5 config-manager setopt google-chrome.enabled=1"
       - "dnf5 install -y google-chrome-stable"
 
+  # 1 password
+  - type: script
+    scripts:
+      - set-1password.sh
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

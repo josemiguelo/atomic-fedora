@@ -1,6 +1,12 @@
 #!/bin/sh
 
-echo "user: $(whoami)"
+CURRENT_USER=$(whoami)
+if [ "$CURRENT_USER" = "sddm" ]; then
+    echo "User is sddm, skipping first-time-checker..."
+    exit 0
+fi
+
+echo "user: $CURRENT_USER"
 
 # Wait for network connection
 echo "Waiting for internet connection..."
@@ -59,6 +65,18 @@ if [ -f "$STEAM_AUTOSTART" ]; then
 else
     echo "Steam autostart file not found at $STEAM_AUTOSTART, skipping."
 fi
+
+# SSH key
+SSH_KEY="$HOME/.ssh/bazzite"
+if [ ! -f "$SSH_KEY" ]; then
+    echo "Creating SSH key 'bazzite'..."
+    ssh-keygen -t ed25519 -C "josemiguelo.ochoa@gmail.com" -f "$SSH_KEY" -N ""
+    ssh-add "$SSH_KEY"
+    echo "Done creating SSH key 'bazzite'"
+else
+    echo "SSH key 'bazzite' already exists."
+fi
+
 
 ##############################################################################################
 ##############################################################################################

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "user: $(whoami)"
+
 if test -e "$HOME"/.config/ublue/setup-done; then
   kdialog --title "first-time-checker" --passivepopup "This process has been already run" 10
   echo "first time checker has been run"
@@ -16,17 +18,21 @@ fi
 kdialog --title "first-time-checker" --passivepopup "configuring flatpaks" 10
 flatpak uninstall --delete-data org.mozilla.firefox -y
 flatpak install -y md.obsidian.Obsidian
+echo "done installing flatpaks"
 
 # steam
 sed -i '/^\[Desktop Entry\]/a Hidden=true' "$HOME"/.config/autostart/steam.desktop
+echo "done fixing steam"
 
 ##############################################################################################
 ##############################################################################################
 
 kdialog --title "first-time-checker" --passivepopup "Finishing first-time-checker script" 10
-echo "Finishing first-time-checker script"
+echo "done first-time-checker script"
 
 mkdir -p "$HOME"/.config/ublue/
 touch "$HOME"/.config/ublue/setup-done
+echo "done creating marker"
 
 rm -f "$HOME"/.config/autostart/first-time-checker.desktop
+echo "done creating marker"

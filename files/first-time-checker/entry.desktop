@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=System Setup
-Comment=Configures system on first login
-Exec=/usr/bin/first-time-checker
-Icon=org.gnome.Terminal
-Type=Application
-Terminal=true
-Categories=Utility;System;

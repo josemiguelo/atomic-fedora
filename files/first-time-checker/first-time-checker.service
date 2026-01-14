@@ -1,0 +1,11 @@
+[Unit]
+Description=First-time system setup checker
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/first-time-checker-trigger
+RemainAfterExit=no
+
+[Install]
+WantedBy=default.target

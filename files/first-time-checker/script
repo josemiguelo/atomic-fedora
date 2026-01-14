@@ -16,17 +16,13 @@ while ! ping -c 1 8.8.8.8 >/dev/null 2>&1; do
     count=$((count+1))
 done
 
-##############################################################################################
-##############################################################################################
-
-# flatpaks
-echo "Configuring flatpaks..."
-
 remove_flatpak() {
     local app_id=$1
     if flatpak info "$app_id" >/dev/null 2>&1; then
         echo "Removing $app_id..."
         flatpak uninstall --delete-data "$app_id" -y
+    else
+        echo "$app_id flatpak is not present on the system. skipping uninstallation..."
     fi
 }
 
@@ -45,9 +41,13 @@ install_flatpak() {
     fi
 }
 
+##############################################################################################
+##############################################################################################
+
+# flatpaks
+echo "Configuring flatpaks..."
 remove_flatpak "org.mozilla.firefox"
 install_flatpak "md.obsidian.Obsidian" "Obsidian"
-
 echo "Done installing flatpaks"
 
 # steam

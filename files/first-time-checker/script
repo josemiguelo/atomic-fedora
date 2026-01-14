@@ -1,19 +1,6 @@
 #!/bin/sh
 
-# Define paths
-SETUP_MARKER="$HOME/.config/ublue/setup-done"
-STEAM_AUTOSTART="$HOME/.config/autostart/steam.desktop"
-
 echo "user: $(whoami)"
-
-if test -e "$SETUP_MARKER"; then
-  echo "This process has been already run"
-  echo "first time checker has been run"
-  sleep 3
-  exit 0
-else
-  echo "Starting first-time-checker script"
-fi
 
 # Wait for network connection
 echo "Waiting for internet connection..."
@@ -35,26 +22,36 @@ done
 # flatpaks
 echo "Configuring flatpaks..."
 
-if flatpak info org.mozilla.firefox >/dev/null 2>&1; then
-    echo "Removing Firefox..."
-    flatpak uninstall --delete-data org.mozilla.firefox -y
-fi
-
-# Install Obsidian (critical)
-if flatpak info md.obsidian.Obsidian >/dev/null 2>&1; then
-    echo "Obsidian is already installed."
-else
-    echo "Installing Obsidian..."
-    if flatpak install -y md.obsidian.Obsidian; then
-        echo "Success: Obsidian installed"
-    else
-        echo "Error: Failed to install Obsidian. Proceeding with remainder of script..."
+remove_flatpak() {
+    local app_id=$1
+    if flatpak info "$app_id" >/dev/null 2>&1; then
+        echo "Removing $app_id..."
+        flatpak uninstall --delete-data "$app_id" -y
     fi
-fi
+}
+
+install_flatpak() {
+    local app_id=$1
+    local app_name=$2
+    if flatpak info "$app_id" >/dev/null 2>&1; then
+        echo "$app_name is already installed."
+    else
+        echo "Installing $app_name..."
+        if flatpak install -y "$app_id"; then
+            echo "Success: $app_name installed"
+        else
+            echo "Error: Failed to install $app_name. Proceeding with remainder of script..."
+        fi
+    fi
+}
+
+remove_flatpak "org.mozilla.firefox"
+install_flatpak "md.obsidian.Obsidian" "Obsidian"
 
 echo "Done installing flatpaks"
 
 # steam
+STEAM_AUTOSTART="$HOME/.config/autostart/steam.desktop"
 if [ -f "$STEAM_AUTOSTART" ]; then
     echo "Fixing steam autostart..."
     sed -i '/^\[Desktop Entry\]/a Hidden=true' "$STEAM_AUTOSTART"
@@ -66,12 +63,4 @@ fi
 ##############################################################################################
 ##############################################################################################
 
-echo "Finishing first-time-checker script"
-
-# Create marker
-mkdir -p "$(dirname "$SETUP_MARKER")"
-touch "$SETUP_MARKER"
-echo "Created setup marker."
-
-echo "All done!"
-read -p "Press Enter to close this window..."
+echo "All done!!"

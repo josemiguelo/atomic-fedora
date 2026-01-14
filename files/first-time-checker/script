@@ -17,10 +17,6 @@ kdialog --title "first-time-checker" --passivepopup "configuring flatpaks" 10
 flatpak uninstall --delete-data org.mozilla.firefox -y
 flatpak install -y md.obsidian.Obsidian
 
-# python packages
-kdialog --title "first-time-checker" --passivepopup "configuring python packages" 10
-python -m pip install --user qmk
-
 # steam
 sed -i '/^\[Desktop Entry\]/a Hidden=true' "$HOME"/.config/autostart/steam.desktop
 

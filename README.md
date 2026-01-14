@@ -1,3 +1,9 @@
+For using on a fresh installation, execute the following commands:
+```bash
+sudo bootc switch ghcr.io/josemiguelo/atomic-fedora:43
+systemctl reboot
+```
+
 # BlueBuild Template &nbsp; [![bluebuild build badge](https://github.com/blue-build/template/actions/workflows/build.yml/badge.svg)](https://github.com/blue-build/template/actions/workflows/build.yml)
 
 See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.

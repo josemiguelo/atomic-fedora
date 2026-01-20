@@ -83,4 +83,11 @@ modules:
     scripts:
       - install-teams.sh
 
+  # fix gtk borders
+  - type: script
+    snippets:
+      - "dnf5 copr enable -y hdfssk/gtk3-nocsd"
+      - "dnf5 install -y gtk3-nocsd"
+
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

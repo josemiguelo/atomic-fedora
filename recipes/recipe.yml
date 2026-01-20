@@ -9,6 +9,11 @@ image-version: stable
 
 modules:
 
+  # general packages
+  - type: script
+    snippets:
+      - "dnf5 install -y vlc konsole okular"
+
   # steam configs
   - type: files
     files:

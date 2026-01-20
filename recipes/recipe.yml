@@ -89,5 +89,19 @@ modules:
       - "dnf5 copr enable -y hdfssk/gtk3-nocsd"
       - "dnf5 install -y gtk3-nocsd"
 
+  # app-switcher
+  - type: files
+    files:
+      - source: app-switcher/main.xml
+        destination: /usr/share/kwin/scripts/app-switcher/contents/config/main.xml
+      - source: app-switcher/metadata.json
+        destination: /usr/share/kwin/scripts/app-switcher/metadata.json
+      - source: app-switcher/main.js
+        destination: /usr/share/kwin/scripts/app-switcher/contents/code/main.js
+      - source: app-switcher/app-focus.sh
+        destination: /usr/bin/app-focus
+  - type: script
+    snippets:
+      - "chmod 755 /usr/bin/app-focus"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

@@ -20,5 +20,11 @@ registerShortcut("cycle-app-focus", "Cycle focus for apps", "", function () {
       }
     }
     workspace.activeWindow = matches[nextIndex];
+  } else {
+    // No matching windows, so launch the app
+    var launchCmd = readConfig("launchCmd", "");
+    if (launchCmd) {
+      callDBus("org.kde.krunner", "/App", "org.kde.krunner.App", "launch", launchCmd);
+    }
   }
 });

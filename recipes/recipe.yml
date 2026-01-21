@@ -35,16 +35,12 @@ modules:
         - code
 
   # first time installer
-  - type: files
-    files:
-      - source: first-time-checker/script
-        destination: /usr/bin/first-time-checker
-      - source: first-time-checker/first-time-checker.service
-        destination: /usr/lib/systemd/user/first-time-checker.service
   - type: script
     snippets:
-      - "chmod 755 /usr/bin/first-time-checker"
-      - "systemctl --global enable first-time-checker.service"
+      - "cp /tmp/files/first-time-checker/first-time-checker*.sh /usr/bin/"
+      - "cp /tmp/files/first-time-checker/first-time-checker.service /usr/lib/systemd/user/"
+      - "chmod 755 /usr/bin/first-time-checker*.sh"
+      - "systemctl --user enable first-time-checker.service"
 
   # sublime-text
   - type: script

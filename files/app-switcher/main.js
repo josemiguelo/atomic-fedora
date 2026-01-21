@@ -24,7 +24,7 @@ registerShortcut("cycle-app-focus", "Cycle focus for apps", "", function () {
     // No matching windows, so launch the app
     var launchCmd = readConfig("launchCmd", "");
     if (launchCmd) {
-      callDBus("org.kde.krunner", "/App", "org.kde.krunner.App", "launch", launchCmd);
+      callDBus("org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell", "startApp", launchCmd);
     }
   }
 });

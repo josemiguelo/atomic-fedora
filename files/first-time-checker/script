@@ -90,9 +90,6 @@ else
   echo "Krohnkite is already installed."
 fi
 
-# Enable app-switcher kwin script
-kwriteconfig6 --file kwinrc --group Plugins --key app-switcherEnabled true
-
 ##############################################################################################
 ##############################################################################################
 

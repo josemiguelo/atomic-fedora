@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 CURRENT_USER=$(whoami)
 echo "user: $CURRENT_USER"
 

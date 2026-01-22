@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 remove_flatpak() {
   local app_id=$1
   if flatpak info "$app_id" >/dev/null 2>&1; then

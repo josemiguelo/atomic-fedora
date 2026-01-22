@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # steam
 STEAM_AUTOSTART="$HOME/.config/autostart/steam.desktop"
 if [ -f "$STEAM_AUTOSTART" ]; then

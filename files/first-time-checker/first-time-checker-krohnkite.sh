@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 echo "Checking if Krohnkite is installed..."
 if ! kpackagetool6 -t KWin/Script -s krohnkite >/dev/null 2>&1; then
   echo "Krohnkite not found, installing..."

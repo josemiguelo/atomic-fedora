@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -x
+
 FOCUS_APP_DIR="$HOME/.local/share/kwin/scripts/focus-app"
-FOCUS_APP_REPO="https://github.com/josemiguelo/focus-app-kde.git"
+FOCUS_APP_REPO="https://github.com/josemiguelo/focus-app.git"
 
 mkdir -p "$HOME/Repos"
 FOCUS_APP_CLONE_DIR="$HOME/Repos/focus-app"
@@ -18,6 +20,8 @@ if [ ! -d "$FOCUS_APP_DIR" ]; then
       echo "Running install.sh..."
       cd "$FOCUS_APP_CLONE_DIR"
       chmod +x install.sh
+      chmod +x generate-main-js.sh
+      chmod +x app-focus.sh
       ./install.sh
       cd - >/dev/null
       echo "Focus App installed successfully."

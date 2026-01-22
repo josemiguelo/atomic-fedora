@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # SSH key
 SSH_KEY="$HOME/.ssh/bazzite"
 if [ ! -f "$SSH_KEY" ]; then

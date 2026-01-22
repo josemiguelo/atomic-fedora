@@ -24,11 +24,11 @@ done
 
 ##############################################################################################
 
-./first-time-checker-flatpaks.sh
-./first-time-checker-steam.sh
-./first-time-checker-ssh.sh
-./first-time-checker-krohnkite.sh
-./first-time-checker-focus-app.sh
+/usr/bin/first-time-checker-flatpaks.sh
+/usr/bin/first-time-checker-steam.sh
+/usr/bin/first-time-checker-ssh.sh
+/usr/bin/first-time-checker-krohnkite.sh
+/usr/bin/first-time-checker-focus-app.sh
 
 ##############################################################################################
 

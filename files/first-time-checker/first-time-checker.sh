@@ -1,12 +1,12 @@
 #!/bin/bash
 
 CURRENT_USER=$(whoami)
-if [ "$CURRENT_USER" = "sddm" ]; then
-  echo "User is sddm, skipping first-time-checker..."
+echo "user: $CURRENT_USER"
+
+if [ "$CURRENT_USER" = "sddm" ] || [ "$CURRENT_USER" = "root" ]; then
+  echo "User is $CURRENT_USER, skipping first-time-checker..."
   exit 0
 fi
-
-echo "user: $CURRENT_USER"
 
 # Wait for network connection
 echo "Waiting for internet connection..."

@@ -40,7 +40,7 @@ modules:
       - "cp /tmp/files/first-time-checker/first-time-checker*.sh /usr/bin/"
       - "cp /tmp/files/first-time-checker/first-time-checker.service /usr/lib/systemd/user/"
       - "chmod 755 /usr/bin/first-time-checker*.sh"
-      - "systemctl --user enable first-time-checker.service"
+      - "systemctl --global enable first-time-checker.service"
 
   # sublime-text
   - type: script

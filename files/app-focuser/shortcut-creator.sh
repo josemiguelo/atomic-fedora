@@ -84,7 +84,7 @@ dbus-send --type=method_call --dest=org.kde.kglobalaccel "/component/services_$D
 # 6. Final Refresh
 # While the DBus call is often enough, a restart can help in some edge cases.
 echo "Requesting a refresh of the global shortcuts daemon..."
-systemctl --user restart plasma-kglobalaccel
+systemctl --user restart plasma-kglobalaccel >/dev/null 2>&1 || true
 
 echo "--- Shortcut Creation Complete! ---"
 echo "Your new shortcut '$APP_NAME' should now be active with the keybinding '$KEYBINDING'."

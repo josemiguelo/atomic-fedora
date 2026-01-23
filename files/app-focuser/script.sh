@@ -9,8 +9,11 @@ if [[ -z "$1" ]]; then
 fi
 
 # 1. kdotool should be installed
-KDOTOOL_BIN="kdotool"
-if ! command -v "$KDOTOOL_BIN" >/dev/null 2>&1; then
+if [ -f "$HOME/.local/bin/kdotool" ]; then
+  KDOTOOL_BIN="$HOME/.local/bin/kdotool"
+elif command -v "kdotool" >/dev/null 2>&1; then
+  KDOTOOL_BIN="kdotool"
+else
   echo "Error: kdotool not found" >&2
   exit 1
 fi
@@ -26,7 +29,7 @@ ACTIVE_WID=$($KDOTOOL_BIN getactivewindow)
 # 3. Logic: Launch, Focus, or Cycle
 if [[ ${#ALL_WIDS[@]} -eq 0 ]]; then
   echo "Class '$CLASS_NAME' not found. Launching $LAUNCH_CMD..."
-  kstart5 "$LAUNCH_CMD" >/dev/null 2>&1 &
+  eval "$LAUNCH_CMD" >/dev/null 2>&1 &
 elif [[ ${#ALL_WIDS[@]} -eq 1 ]]; then
   # Even if only one, we check if it's already focused to avoid redundant calls
   if [[ "$ACTIVE_WID" == "${ALL_WIDS[0]}" ]]; then

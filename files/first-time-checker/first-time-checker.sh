@@ -30,7 +30,6 @@ done
 /usr/bin/first-time-checker-steam.sh
 /usr/bin/first-time-checker-ssh.sh
 /usr/bin/first-time-checker-krohnkite.sh
-/usr/bin/first-time-checker-focus-app.sh
 /usr/bin/first-time-checker-kdotool.sh
 
 ##############################################################################################

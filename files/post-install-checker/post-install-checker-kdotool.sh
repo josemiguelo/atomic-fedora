@@ -11,6 +11,7 @@ REPO_ROOT=$(dirname "$(dirname "$SCRIPT_DIR")")
 echo "Checking if kdotool is installed..."
 if [ ! -f "$HOME/.local/bin/kdotool" ]; then
   echo "kdotool not found, installing..."
+  mkdir -p "$HOME/.local/bin"
   TEMP_DIR=$(mktemp -d)
   git clone https://github.com/jinliu/kdotool "$TEMP_DIR"
   cd "$TEMP_DIR" || exit

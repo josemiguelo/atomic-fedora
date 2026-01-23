@@ -14,12 +14,6 @@ modules:
     snippets:
       - "dnf5 install -y vlc konsole okular rust cargo dbus-devel"
 
-  # steam configs
-  - type: files
-    files:
-      - source: steam-fixer/systemd.service
-        destination: /usr/lib/systemd/user/steam-fixer.service
-
   # firefox
   - type: script
     snippets:

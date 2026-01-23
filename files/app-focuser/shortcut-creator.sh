@@ -42,7 +42,12 @@ FILE_PATH="$HOME/.local/share/applications/$ID"
 echo "Generated ID: $ID"
 echo "Desktop file will be at: $FILE_PATH"
 
-EXEC_CMD="/usr/bin/focus-app '$WINDOW_CLASS' '$LAUNCH_CMD'"
+if [ ! -d $HOME/Repos/atomic-fedora ]; then
+  echo "atomic-fedora repo not found, cloning..."
+  mkdir -p $HOME/Repos && git clone https://github.com/josemiguelo/atomic-fedora.git $HOME/Repos/atomic-fedora
+fi
+
+EXEC_CMD="$HOME/Repos/atomic-fedora/files/app-focuser/script.sh '$WINDOW_CLASS' '$LAUNCH_CMD'"
 echo "Exec command will be: $EXEC_CMD"
 
 # 2. Create the .desktop file

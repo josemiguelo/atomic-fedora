@@ -17,8 +17,6 @@ modules:
   # steam configs
   - type: files
     files:
-      - source: steam-fixer/script.sh
-        destination: /usr/bin/steam-fixer.sh
       - source: steam-fixer/systemd.service
         destination: /usr/lib/systemd/user/steam-fixer.service
 
@@ -37,10 +35,8 @@ modules:
   # first time installer
   - type: script
     snippets:
-      - "cp /tmp/files/first-time-checker/first-time-checker*.sh /usr/bin/"
-      - "cp /tmp/files/first-time-checker/first-time-checker.service /usr/lib/systemd/user/"
-      - "chmod 755 /usr/bin/first-time-checker*.sh"
-      - "systemctl --global enable first-time-checker.service"
+      - "cp /tmp/files/post-install-checker/post-install-checker.service /usr/lib/systemd/user/"
+      - "systemctl --global enable post-install-checker.service"
 
   # sublime-text
   - type: script
@@ -84,17 +80,5 @@ modules:
     snippets:
       - "dnf5 copr enable -y hdfssk/gtk3-nocsd"
       - "dnf5 install -y gtk3-nocsd"
-
-  # app focuser
-  - type: files
-    files:
-      - source: app-focuser/script.sh
-        destination: /usr/bin/focus-app
-      - source: app-focuser/shortcut-creator.sh
-        destination: /usr/bin/focus-app-shortcut-creator
-  - type: script
-    snippets:
-      - "chmod 755 /usr/bin/focus-app"
-      - "chmod 755 /usr/bin/focus-app-shortcut-creator"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

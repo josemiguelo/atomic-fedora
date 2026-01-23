@@ -2,6 +2,9 @@
 
 set -ex
 
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+REPO_ROOT=$(dirname "$(dirname "$SCRIPT_DIR")")
+
 ########################
 # kdotool installation #
 ########################
@@ -31,6 +34,7 @@ fi
 #####################
 # shortcut creation #
 #####################
-/usr/bin/focus-app-shortcut-creator 'Focus Firefox' 'Meta+Ctrl+Alt+Shift+F' 'org.mozilla.firefox' "kstart firefox"
-/usr/bin/focus-app-shortcut-creator 'Focus Dolphin' 'Meta+Ctrl+Alt+Shift+E' 'org.kde.dolphin' "kstart dolphin"
-/usr/bin/focus-app-shortcut-creator 'Focus Wezterm' 'Meta+Ctrl+Alt+Shift+T' 'org.wezfurlong.wezterm' '/usr/bin/distrobox-enter -n fedora-dev -- wezterm start --cwd .'
+"$REPO_ROOT/files/app-focuser/shortcut-creator.sh" 'Focus Firefox' 'Meta+Ctrl+Alt+Shift+F' 'org.mozilla.firefox' "kstart firefox"
+"$REPO_ROOT/files/app-focuser/shortcut-creator.sh" 'Focus Dolphin' 'Meta+Ctrl+Alt+Shift+E' 'org.kde.dolphin' "kstart dolphin"
+"$REPO_ROOT/files/app-focuser/shortcut-creator.sh" 'Focus Wezterm' 'Meta+Ctrl+Alt+Shift+W' 'org.wezfurlong.wezterm' "/usr/bin/distrobox-enter -n fedora-dev -- wezterm start --cwd ."
+"$REPO_ROOT/files/app-focuser/shortcut-creator.sh" 'Focus Konsole' 'Meta+Ctrl+Alt+Shift+K' 'org.kde.konsole' "kstart konsole"

@@ -3,7 +3,10 @@ Description=Force Apply Steam Fixes
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/steam-fixer.sh
+User=josemiguel
+ExecStartPre=/bin/bash -c "if [ ! -d %h/Repos/atomic-fedora ]; then mkdir -p %h/Repos && git clone https://github.com/josemiguelo/atomic-fedora.git %h/Repos/atomic-fedora; fi"
+ExecStartPre=/bin/bash -c "if [ ! -f %h/Repos/atomic-fedora/files/steam-fixer/script.sh ]; then echo 'Error: script %h/Repos/atomic-fedora/files/steam-fixer/script.sh not found' >&2; exit 1; fi"
+ExecStart=/bin/bash %h/Repos/atomic-fedora/files/steam-fixer/script.sh
 RemainAfterExit=yes
 
 [Install]

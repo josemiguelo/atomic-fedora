@@ -1,0 +1,14 @@
+[Unit]
+Description=Post installation system setup checker
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+User=josemiguel
+ExecStartPre=/bin/bash -c "if [ ! -d %h/Repos/atomic-fedora ]; then mkdir -p %h/Repos && git clone https://github.com/josemiguelo/atomic-fedora.git %h/Repos/atomic-fedora; fi"
+ExecStartPre=/bin/bash -c "if [ ! -f %h/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh ]; then echo 'Error: script %h/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh not found' >&2; exit 1; fi"
+ExecStart=/bin/bash %h/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=default.target

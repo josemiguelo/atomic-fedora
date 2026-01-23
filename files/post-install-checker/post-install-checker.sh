@@ -2,11 +2,13 @@
 
 set -ex
 
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
 CURRENT_USER=$(whoami)
 echo "user: $CURRENT_USER"
 
 if [ "$CURRENT_USER" = "sddm" ] || [ "$CURRENT_USER" = "root" ]; then
-  echo "User is $CURRENT_USER, skipping first-time-checker..."
+  echo "User is $CURRENT_USER, skipping post-install-checker..."
   exit 0
 fi
 
@@ -26,11 +28,11 @@ done
 
 ##############################################################################################
 
-/usr/bin/first-time-checker-flatpaks.sh
-/usr/bin/first-time-checker-steam.sh
-/usr/bin/first-time-checker-ssh.sh
-/usr/bin/first-time-checker-krohnkite.sh
-/usr/bin/first-time-checker-kdotool.sh
+"$SCRIPT_DIR"/post-install-checker-flatpaks.sh
+"$SCRIPT_DIR"/post-install-checker-steam.sh
+"$SCRIPT_DIR"/post-install-checker-ssh.sh
+"$SCRIPT_DIR"/post-install-checker-krohnkite.sh
+"$SCRIPT_DIR"/post-install-checker-kdotool.sh
 
 ##############################################################################################
 

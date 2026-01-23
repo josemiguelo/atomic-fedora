@@ -48,6 +48,15 @@ These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](ht
 cosign verify --key cosign.pub ghcr.io/blue-build/template
 ```
 
+## How Post Install Checker
+
+1. At build time, a service called `post-install-check.service` is copied to `/usr/lib/systemd/user/`.
+2. At login time, the service executes and checks firstly if this repos has been cloned at ~/Repos/atomic-fedora; if it hasn't then it clones it.
+3. Then the service executes the script `$HOME/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh` 
+
+I was copying this post-install-checker scripts on /usr/bin, but iterating on them was getting extreme slow since I had to wait every time for the image to be ready.
+
 ## Todos
 
 - autostart ssh agent on the host
+- define my own kde shortcuts at build time

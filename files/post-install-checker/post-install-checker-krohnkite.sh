@@ -10,6 +10,8 @@ if ! kpackagetool6 -t KWin/Script -s krohnkite >/dev/null 2>&1; then
   kpackagetool6 -t KWin/Script -i "$TMP_KWIN_SCRIPT"
   rm "$TMP_KWIN_SCRIPT"
   echo "Krohnkite installed."
+  kwriteconfig6 --file kwinrc --group Plugins --key krohnkiteEnabled true
+  echo "Krohnkite enabled."
 else
   echo "Krohnkite is already installed."
 fi

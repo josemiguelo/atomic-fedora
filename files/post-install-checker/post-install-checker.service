@@ -4,9 +4,8 @@ After=graphical-session.target
 
 [Service]
 Type=oneshot
-User=josemiguel
-ExecStartPre=/bin/bash -c "if [ ! -d %h/Repos/atomic-fedora ]; then mkdir -p %h/Repos && git clone https://github.com/josemiguelo/atomic-fedora.git %h/Repos/atomic-fedora; fi"
-ExecStartPre=/bin/bash -c "if [ ! -f %h/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh ]; then echo 'Error: script %h/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh not found' >&2; exit 1; fi"
+ExecStartPre=/bin/bash -c "echo 'ExecStartPre 1'; CURRENT_USER=$(whoami); if [ \"$CURRENT_USER\" = \"sddm\" ] || [ \"$CURRENT_USER\" = \"root\" ]; then echo \"User is $CURRENT_USER, skipping post-install-checker...\" >&2; exit 1; fi"
+ExecStartPre=/bin/bash -c "echo 'ExecStartPre 2'; if [ ! -d %h/Repos/atomic-fedora ]; then mkdir -p %h/Repos && git clone https://github.com/josemiguelo/atomic-fedora.git %h/Repos/atomic-fedora; fi"
 ExecStart=/bin/bash %h/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh
 RemainAfterExit=no
 

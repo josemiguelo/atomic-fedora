@@ -27,9 +27,12 @@ modules:
         - code
 
   # first time installer
+  - type: files
+    files:
+     - source: post-install-checker/post-install-checker.service
+       destination: /usr/lib/systemd/user/post-install-checker.service
   - type: script
     snippets:
-      - "cp /tmp/files/post-install-checker/post-install-checker.service /usr/lib/systemd/user/"
       - "systemctl --global enable post-install-checker.service"
 
   # sublime-text

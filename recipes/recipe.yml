@@ -50,13 +50,6 @@ modules:
       - "dnf5 config-manager setopt google-chrome.enabled=1"
       - "dnf5 install -y google-chrome-stable"
 
-  # klassy 
-  - type: script
-    snippets:
-      - "dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:paul4us/Fedora_43/home:paul4us.repo"
-      - "dnf5 makecache"
-      - "dnf5 install -y klassy"
-
   # 1password
   - type: script
     scripts:

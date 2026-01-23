@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 # steam
 STEAM_AUTOSTART="$HOME/.config/autostart/steam.desktop"

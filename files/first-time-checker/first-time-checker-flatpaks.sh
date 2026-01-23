@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 remove_flatpak() {
   local app_id=$1

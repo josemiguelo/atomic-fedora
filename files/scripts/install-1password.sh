@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -ouex pipefail
+
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 
 dnf5 config-manager addrepo \

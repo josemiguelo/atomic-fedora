@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 FOCUS_APP_DIR="$HOME/.local/share/kwin/scripts/focus-app"
 FOCUS_APP_REPO="https://github.com/josemiguelo/focus-app.git"

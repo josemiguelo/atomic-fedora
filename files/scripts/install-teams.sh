@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ouex pipefail
+
 curl -1sLf -o /tmp/teams-for-linux.asc https://repo.teamsforlinux.de/teams-for-linux.asc
 
 rpm --import /tmp/teams-for-linux.asc

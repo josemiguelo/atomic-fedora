@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 # SSH key
 SSH_KEY="$HOME/.ssh/bazzite"

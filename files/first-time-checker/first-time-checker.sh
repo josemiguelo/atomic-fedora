@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 CURRENT_USER=$(whoami)
 echo "user: $CURRENT_USER"
@@ -31,6 +31,7 @@ done
 /usr/bin/first-time-checker-ssh.sh
 /usr/bin/first-time-checker-krohnkite.sh
 /usr/bin/first-time-checker-focus-app.sh
+/usr/bin/first-time-checker-kdotool.sh
 
 ##############################################################################################
 

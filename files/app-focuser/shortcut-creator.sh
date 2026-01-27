@@ -36,9 +36,11 @@ echo "--- Starting Shortcut Creation ---"
 # 1. Standardize the ID
 # Sanitize the app name to create a safe filename and identifier.
 # Replaces spaces and special characters with hyphens and converts to lowercase.
+APPS_PATHS="$HOME/.local/share/applications"
+mkdir -p "$APPS_PATHS"
 SANITIZED_NAME=$(echo "$APP_NAME" | tr -s '[:punct:][:space:]' '-' | tr '[:upper:]' '[:lower:]' | sed 's/^-//;s/-$//')
 ID="net.local.$SANITIZED_NAME.desktop"
-FILE_PATH="$HOME/.local/share/applications/$ID"
+FILE_PATH="$APPS_PATHS/$ID"
 echo "Generated ID: $ID"
 echo "Desktop file will be at: $FILE_PATH"
 

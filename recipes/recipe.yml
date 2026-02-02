@@ -4,8 +4,8 @@
 name: atomic-fedora
 description: This is my personal OS image
 
-base-image: ghcr.io/ublue-os/bazzite-dx-nvidia
-image-version: stable
+base-image: ghcr.io/ublue-os/bluefin-nvidia-open
+image-version: 43
 
 modules:
 
@@ -13,6 +13,11 @@ modules:
   - type: script
     snippets:
       - "dnf5 install -y vlc konsole okular rust cargo dbus-devel"
+
+  # cosmic-desktop
+  - type: script
+    scripts:
+      - install-cosmic-desktop.sh
 
   # firefox
   - type: script
@@ -64,11 +69,5 @@ modules:
   - type: script
     scripts:
       - install-teams.sh
-
-  # fix gtk borders
-  - type: script
-    snippets:
-      - "dnf5 copr enable -y hdfssk/gtk3-nocsd"
-      - "dnf5 install -y gtk3-nocsd"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

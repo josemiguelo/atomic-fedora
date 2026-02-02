@@ -31,8 +31,6 @@ done
 "$SCRIPT_DIR"/post-install-checker-flatpaks.sh
 "$SCRIPT_DIR"/post-install-checker-steam.sh
 "$SCRIPT_DIR"/post-install-checker-ssh.sh
-"$SCRIPT_DIR"/post-install-checker-krohnkite.sh
-"$SCRIPT_DIR"/post-install-checker-kdotool.sh
 
 ##############################################################################################
 

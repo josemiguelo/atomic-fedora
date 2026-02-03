@@ -70,4 +70,9 @@ modules:
     scripts:
       - install-teams.sh
 
+  # Steam
+  - type: script
+    scripts:
+      - install-steam.sh
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

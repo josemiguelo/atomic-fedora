@@ -29,6 +29,8 @@ install_flatpak() {
 
 # flatpaks
 echo "Configuring flatpaks..."
+
 remove_flatpak "org.mozilla.firefox"
 install_flatpak "md.obsidian.Obsidian" "Obsidian"
+
 echo "Done installing flatpaks"

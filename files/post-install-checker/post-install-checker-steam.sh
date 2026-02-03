@@ -17,15 +17,15 @@ STEAM_DIR="$HOME/.steam/steam"
 mkdir -p "$STEAM_DIR"
 
 STEAM_DEV_FILE="$STEAM_DIR/steam_dev.cfg"
-if [ -f "$STEAM_DEV_FILE" ]; then
+if [ ! -f "$STEAM_DEV_FILE" ]; then
   echo "Creating steam dev file $STEAM_DEV_FILE..."
-  cat <<EOF >"$HOME/.steam/steam/steam_dev.cfg"
-  @ShaderBackgroundProcessingThreads 8
-  unShaderBackgroundProcessingThreads 8
-  EOF
+  cat <<EOF >"$STEAM_DEV_FILE"
+@ShaderBackgroundProcessingThreads 8
+unShaderBackgroundProcessingThreads 8
+EOF
   echo "Done creating steam dev file $STEAM_DEV_FILE..."
 else
-  echo "Steam dev file $STEAM_DEV_FILE already created. skipping...."
+  echo "Steam dev file $STEAM_DEV_FILE already exists. skipping...."
 fi
 
 echo "Done fixing steam..."

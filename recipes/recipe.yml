@@ -9,10 +9,10 @@ image-version: 43
 
 modules:
 
-  # general packages
+  # dnf packages
   - type: script
-    snippets:
-      - "dnf5 install -y vlc konsole okular rust cargo dbus-devel"
+    scripts:
+      - install-dnf-packages.sh
 
   # cosmic-desktop
   - type: script

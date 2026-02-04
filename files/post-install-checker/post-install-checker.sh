@@ -31,6 +31,11 @@ done
 "$SCRIPT_DIR"/post-install-checker-flatpaks.sh
 "$SCRIPT_DIR"/post-install-checker-steam.sh
 "$SCRIPT_DIR"/post-install-checker-ssh.sh
+"$SCRIPT_DIR"/post-install-checker-git.sh
+"$SCRIPT_DIR"/post-install-checker-dotfiles.sh
+"$SCRIPT_DIR"/post-install-checker-fonts.sh
+"$SCRIPT_DIR"/post-install-checker-asdf.sh
+"$SCRIPT_DIR"/post-install-checker-ngrok.sh
 
 ##############################################################################################
 

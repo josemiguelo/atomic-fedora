@@ -25,6 +25,12 @@ modules:
       - "dnf5 config-manager setopt fedora-cisco-openh264.enabled=1"
       - "dnf5 install -y firefox --allowerasing"
 
+  # custom ujust tasks
+  - type: files
+    files:
+     - source: ujust/60-custom.just
+       destination: /usr/share/ublue-os/just/60-custom.just
+
   # first time installer
   - type: files
     files:

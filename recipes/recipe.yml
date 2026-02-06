@@ -4,7 +4,7 @@
 name: atomic-fedora
 description: This is my personal OS image
 
-base-image: ghcr.io/ublue-os/bluefin-nvidia-open
+base-image: ghcr.io/ublue-os/bluefin-dx-nvidia-open
 image-version: 43
 
 modules:

@@ -25,12 +25,6 @@ modules:
       - "dnf5 config-manager setopt fedora-cisco-openh264.enabled=1"
       - "dnf5 install -y firefox --allowerasing"
 
-  # vscode
-  - type: dnf
-    remove:
-      packages:
-        - code
-
   # first time installer
   - type: files
     files:

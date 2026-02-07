@@ -26,6 +26,12 @@ echo "::group:: Install Additional Utilities"
 dnf5 install -y \
   xdg-desktop-portal-cosmic
 
+dnf5 remove -y \
+  gnome-shell-extension* \
+  nautilus
+# gdm \
+# gnome-shell
+
 echo "Additional utilities installed"
 echo "::endgroup::"
 

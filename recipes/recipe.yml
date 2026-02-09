@@ -4,7 +4,7 @@
 name: atomic-fedora
 description: This is my personal OS image
 
-base-image: ghcr.io/josemiguelo/bluefin-dx-nvidia-open
+base-image: ghcr.io/ublue-os/bluefin-dx-nvidia-open
 image-version: 43
 
 modules:
@@ -74,16 +74,5 @@ modules:
   - type: script
     scripts:
       - install-steam.sh
-
-  # services
-  - type: script
-    snippets:
-      - "systemctl --global disable docker.socket"
-
-  # starship
-  - type: script
-    snippets:
-      - "dnf5 copr enable -y atim/starship"
-      - "dnf5 install -y starship"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

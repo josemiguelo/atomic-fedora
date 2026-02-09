@@ -4,9 +4,9 @@ After=graphical-session.target
 
 [Service]
 Type=oneshot
-ExecStartPre=/bin/bash -c "echo 'ExecStartPre 1'; CURRENT_USER=$(whoami); if [[ \"$CURRENT_USER\" == \"sddm\" || \"$CURRENT_USER\" == \"root\" || \"$CURRENT_USER\" == gdm* ]]; then echo \"User is $CURRENT_USER, skipping post-install-checker...\" >&2; exit 1; fi"
-ExecStartPre=/bin/bash -c "echo 'ExecStartPre 2'; if [ ! -d %h/Repos/atomic-fedora ]; then mkdir -p %h/Repos && git clone https://github.com/josemiguelo/atomic-fedora.git %h/Repos/atomic-fedora; fi"
-ExecStart=/bin/bash %h/Repos/atomic-fedora/files/post-install-checker/post-install-checker.sh
+ExecStartPre=/bin/bash -c "echo 'Checking user..'; CURRENT_USER=$(whoami); if [[ \"$CURRENT_USER\" == \"sddm\" || \"$CURRENT_USER\" == \"root\" || \"$CURRENT_USER\" == gdm* ]]; then echo \"User is $CURRENT_USER, skipping post-install-checker...\" >&2; exit 1; fi"
+ExecStartPre=/bin/bash -c "echo 'Checking atomic-fedora repo'; if [ ! -d %h/Repos/atomic-fedora ]; then mkdir -p %h/Repos && git clone https://github.com/josemiguelo/atomic-fedora.git %h/Repos/atomic-fedora; fi"
+ExecStart=/bin/bash -c "echo 'Post install checker done!'"
 RemainAfterExit=no
 
 [Install]

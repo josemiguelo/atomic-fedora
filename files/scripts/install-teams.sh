@@ -9,3 +9,4 @@ rpm --import /tmp/teams-for-linux.asc
 curl -1sLf -o /etc/yum.repos.d/teams-for-linux.repo https://repo.teamsforlinux.de/rpm/teams-for-linux.repo
 
 dnf5 -y install teams-for-linux
+dnf5 clean all

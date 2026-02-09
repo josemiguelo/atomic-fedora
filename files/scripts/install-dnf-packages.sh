@@ -11,8 +11,10 @@ DEV_PACKAGES=(
   "konsole"
   "okular"
   "dbus-devel"
+  "dnf-command(copr)"
 )
 dnf5 install -y "${DEV_PACKAGES[@]}"
+dnf5 clean all
 
 ###############
 ## DEV TOOLS ##
@@ -44,6 +46,7 @@ DEV_PACKAGES=(
 )
 echo "Installing dev packages ${#DEV_PACKAGES[@]} ..."
 dnf5 install -y "${DEV_PACKAGES[@]}"
+dnf5 clean all
 
 ###############
 ## CLI TOOLS ##
@@ -61,8 +64,7 @@ CLI_PACKAGES=(
 )
 echo "Installing cli packages ${#CLI_PACKAGES[@]} ..."
 dnf5 install -y "${CLI_PACKAGES[@]}"
-
-dnf5 install -y 'dnf-command(copr)'
+dnf5 clean all
 
 ##########
 ## YAZI ##
@@ -75,6 +77,7 @@ dnf5 install -y yazi
 #############
 dnf5 copr enable -y wezfurlong/wezterm-nightly
 dnf5 install -y wezterm
+dnf5 clean all
 
 ############
 ## VSCODE ##
@@ -84,6 +87,7 @@ rpm --import https://packages.microsoft.com/keys/microsoft.asc &&
   tee /etc/yum.repos.d/vscode.repo >/dev/null
 
 dnf5 install -y code
+dnf5 clean all
 
 #################
 ## ANTIGRAVITY ##
@@ -97,6 +101,7 @@ gpgcheck=0
 EOF
 dnf5 makecache
 dnf5 install -y antigravity
+dnf5 clean all
 
 ## clean everything ......
 dnf5 clean all

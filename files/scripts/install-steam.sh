@@ -11,4 +11,5 @@ echo "::endgroup::"
 
 echo "::group:: Install steam"
 sudo dnf install steam -y
+dnf5 clean all
 echo "::endgroup::"

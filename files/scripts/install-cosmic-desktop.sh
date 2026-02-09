@@ -29,4 +29,6 @@ dnf5 install -y \
 echo "Additional utilities installed"
 echo "::endgroup::"
 
+dnf5 clean all
+
 echo "COSMIC desktop installation complete!"

@@ -14,3 +14,4 @@ dnf5 config-manager addrepo \
   --set=gpgkey="https://downloads.1password.com/linux/keys/1password.asc"
 
 dnf5 install -y 1password
+dnf5 clean all

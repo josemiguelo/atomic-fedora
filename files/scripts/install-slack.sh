@@ -19,3 +19,4 @@ EOF
 
 dnf5 -y --refresh makecache
 dnf5 -y install slack
+dnf5 clean all
